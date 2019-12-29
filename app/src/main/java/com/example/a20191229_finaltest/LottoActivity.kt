@@ -63,16 +63,35 @@ class LottoActivity : BaseActivity() {
 //        3등 당첨금 => 5만원
 //        4등 당첨금 => 5천원
 //        맞춪 갯수에 따라 등수 판정
+        var isSecondRank = false
+
         if (correctCount == 6 ){
+//            1등당첨
             totalWinMoney +=500000000
 
         }else if (correctCount  == 5){
-            totalWinMoney +=1500000
+//            보너스 번호가 맞다면 2등 아니라면 3등
+            for(myNumTxt in myLottoNumTextViewList){
+                val myNumber = myNumTxt.text.toString().toInt()
+
+                if(myNumber == boundsNumber){
+//                    2등 당첨 5000만원
+                    isSecondRank = true
+                    totalWinMoney +=50000000
+
+                }else{
+//                    3등 당첨
+                    totalWinMoney +=1500000
+                }
+
+            }
 
         }else if (correctCount ==4){
+//            4등당첨
             totalWinMoney +=50000
 
         }else if (correctCount ==3){
+//            3등당첨
             totalWinMoney +=5000
 
         }else {
