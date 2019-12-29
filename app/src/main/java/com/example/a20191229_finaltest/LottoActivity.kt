@@ -257,12 +257,12 @@ class LottoActivity : BaseActivity() {
             if (isDuplOk) {
                 bonusNumber = tempNum
 //                제약조건에 맞는 숫자를 찾았으니 무한반복 종료
+                bonusNumTxt.text = bonusNumber.toString()
                 break
             }
 
         }
 
-        bonusNumTxt.text = bonusNumber.toString()
 
 
 //        6개의 당첨번호 / 각자리의 텍스트뷰를 매칭 for문
