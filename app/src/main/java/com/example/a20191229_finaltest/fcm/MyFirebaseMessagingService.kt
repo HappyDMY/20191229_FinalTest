@@ -16,9 +16,9 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     }
 
-    override fun onNewToken(p0: String?) {
-        super.onNewToken(p0)
+    override fun onNewToken(token: String?) {
+        super.onNewToken(token)
 
-        Log.d("새로발급 받은 토큰", p0)
+        Log.d("새로발급 받은 토큰", token)
     }
 }
