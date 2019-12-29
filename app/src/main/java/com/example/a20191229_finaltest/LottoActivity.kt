@@ -11,6 +11,7 @@ class LottoActivity : BaseActivity() {
 
     var totalWinMoney = 0L //0을 Long타입으로 대입 => 50억은 Int로 못 담음
     var usedMoney = 0L //0을 Long타입으로 대입 => 50억은 Int로 못 담음
+    var boundsNumber = 0 //보너스 번호를 담기위한 변수
     val winLottoNumArr =ArrayList<Int>()
     val winLottoNumTextViewList = ArrayList<TextView>()
     val myLottoNumTextViewList = ArrayList<TextView>()
@@ -78,9 +79,15 @@ class LottoActivity : BaseActivity() {
 //            꽝임
 
         }
-        totalWinMoneyTxt.text = totalWinMoney.toString()
 
-        usedMoneyTxt.text = usedMoney.toString()
+//        당첨금액
+//        totalWinMoneyTxt.text = totalWinMoney.toString()
+        totalWinMoneyTxt.text = String.format("%,d원",totalWinMoney)
+
+//        사용금액
+        usedMoney +=1000
+//        usedMoneyTxt.text = usedMoney.toString()
+        usedMoneyTxt.text = String.format("%,d원",usedMoney)
 
     }//fun end
 //
@@ -94,9 +101,15 @@ class LottoActivity : BaseActivity() {
 //        작은 숫자부터 나열 되도록 정렬
 //        여기까지 완료되면 6개의 텍스트 뷰에 반영
 
+//        기존 당첨번호 클리어
         winLottoNumArr.clear()
+//        기존 보너스번호 클리어
+        boundsNumber = 0
 
+
+//        당첨번호를 6개 만들기 위한 for 문
         for (i in 0..5){
+//            제약조건을 만족할 때까지 (몇번 돌아야 맞녹인지 모름.) 무한반복 while
             while (true){
                 val randomInt = Random().nextInt(45)+1 //0~44의 랜덤값 +1 1~45사이의 랜덤
                 var isDuplOk = true
@@ -117,6 +130,25 @@ class LottoActivity : BaseActivity() {
         }//for end
 
         Collections.sort(winLottoNumArr)
+
+//        보너스 번호도 생성
+//        1~45의 값, 기존 당첨번호와 중복되지 않아야 함 1개만
+        while (true){
+            val tempNum = Random().nextInt(45)+1
+
+            var isDuplOk = true
+
+            for (winNum in winLottoNumArr){
+                if (tempNum == winNum){
+                    isDuplOk = false
+                }
+            }
+
+            if (isDuplOk){
+                boundsNumber = tempNum
+                break
+            }
+        }
 
         for (num in winLottoNumArr){
             Log.d("당첨번호", num.toString())
