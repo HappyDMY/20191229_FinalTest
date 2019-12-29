@@ -9,15 +9,17 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setValues()
+        setupEvents()
     }
 
     override fun setupEvents() {
-        lottoBtn.setOnClickListener{
 
+        lottoBtn.setOnClickListener {
             val intent = Intent(mContext, LottoActivity::class.java)
             startActivity(intent)
-
         }
+
     }
 
     override fun setValues() {
