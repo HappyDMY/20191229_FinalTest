@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:layout_margin="10dp"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:gravity="center"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/lottoBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="로또시뮬레이터 버튼"/>
-
+        android:text="로또 시뮬레이터로 이동"/>
 
 </LinearLayout>
